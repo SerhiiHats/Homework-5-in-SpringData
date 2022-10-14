@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>full-organizations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+<div class="container my-2">
+    <div style="width: 1200px" class="card">
+        <div class="card-body">
+            <form name="search-form-starts" class="col mx-auto" action="/all/search-starts">
+                <a> name starts at:
+                    <a><input name="search" type="text" style="width: 300px; height: 32px; border: 1px solid burlywood">
+                        <input type="submit" class="btn btn-search" value=" Search ">
+                    </a>
+                </a>
+            </form>
+            <br>
+            <form name="search-containing" class="col mx-auto" action="/all/search-containing">
+                <a> name contains:
+                    <a><input name="search" type="text" style="width: 300px; height: 32px; border: 1px solid burlywood">
+                        <input type="submit" class="btn btn-search" value=" Search ">
+                    </a>
+                </a>
+            </form>
+
+            <div th:switch="${dtoorganization}" class="container my-5">
+                <p class="my-2">
+                    <a>
+                        <a href="/">
+                            <i name="come back" class="btn btn-primary">Come back</i>
+                        </a>
+                    </a>
+                </p>
+
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="margin-left: 500px">organization</th>
+                            <th style="margin-left: 200px">title job</th>
+                            <th style="margin-left: 300px">employee</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="dtoorganization : ${dtoorganization}">
+                            <td style="width: 500px" th:text="${dtoorganization.nameOrganizationDto}"></td>
+                            <td style="width: 200px" th:text="${dtoorganization.jobTitleEmployeeDto}"></td>
+                            <a style="width: 300px">
+                                <td style="width: 300px" th:text="${dtoorganization.fullNameEmployeeDto}">
+                            </a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
